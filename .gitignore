@@ -1,3 +1,10 @@
+# Ching added
+pybert/model/pretrain/*
+!pybert/model/pretrain/*/__init__.py
+
+pybert/dataset/*/kaggle/*
+pybert/dataset/*/testing/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
