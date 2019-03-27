@@ -146,7 +146,14 @@ class AUC(Metric):
         '''
         计算指标得分
         '''
-        auc = roc_auc_score(y_score=self.y_prob, y_true=self.y_true, average=self.average)
+       
+        # Ching: for unbalanced/cold-start data
+        try:
+            auc = roc_auc_score(y_score=self.y_prob, y_true=self.y_true, average=self.average)
+        except ValueError as e:
+            print('ValueError found:  {0}'.format(e))
+            auc = 0.0
+
         return auc
 
     def name(self):
@@ -296,7 +303,13 @@ class MultiLabelReport(Metric):
         计算指标得分
         '''
         for i, label in self.id2label.items():
-            auc = roc_auc_score(y_score=self.y_prob[:, i], y_true=self.y_true[:, i])
+            # Ching: for unbalanced/cold-start data
+            try:
+                auc = roc_auc_score(y_score=self.y_prob[:, i], y_true=self.y_true[:, i])
+            except ValueError as e:
+                print('ValueError found: {0}'.format(e))
+                auc = 0.0
+            
             print(f"label:{label} - auc: {auc:.4f}")
 
     def name(self):

@@ -17,10 +17,10 @@ configs = {
 
     'task':'multi label',
     'data':{
-        'raw_data_path': BASE_DIR / 'dataset/raw/train.csv',  # 总的数据，一般是将train和test何在一起构建语料库
-        'train_file_path': BASE_DIR / 'dataset/processed/train.tsv',
-        'valid_file_path': BASE_DIR / 'dataset/processed/valid.tsv',
-        'test_file_path': BASE_DIR / 'dataset/raw/test.csv'
+        'raw_data_path': BASE_DIR / 'dataset/raw/testing/train.csv',  # 总的数据，一般是将train和test何在一起构建语料库
+        'train_file_path': BASE_DIR / 'dataset/processed/testing/train.tsv',
+        'valid_file_path': BASE_DIR / 'dataset/processed/testing/valid.tsv',
+        'test_file_path': BASE_DIR / 'dataset/raw/testing/test.csv'
     },
     'output':{
         'log_dir': BASE_DIR / 'output/log', # 模型运行日志
@@ -44,7 +44,7 @@ configs = {
         'valid_size': 0.2,
         'max_seq_len': 256,
         'do_lower_case':True,
-        'batch_size': 100,#24,  # how many samples to process at once
+        'batch_size': 10,#24,  # how many samples to process at once
         'epochs': 6,  # number of epochs to train
         'start_epoch': 1,
         'warmup_proportion': 0.1,# Proportion of training to perform linear learning rate warmup for. E.g., 0.1 = 10%% of training.
@@ -68,13 +68,20 @@ configs = {
         'save_best_only': True, # 是否保存最好模型
         'save_checkpoint_freq': 10 # 保存模型频率，当save_best_only为False时候，指定才有作用
     },
-    'label2id' : { # 标签映射
-        "toxic": 0,
-        "severe_toxic": 1,
-        "obscene": 2,
-        "threat": 3,
-        "insult": 4,
-        "identity_hate": 5
+    # Amendments,Disputes,E2E,EOT,eServices,Exam,GENcase,Headstart,NewApp,OutboundCorro,Renewal
+    # No data for NewApp to dropped it
+    'label2id' : {
+        "amendments": 0,
+        "disputes": 1,
+        "e2e": 2,
+        "eot": 3,
+        "eservices": 4,
+        "exam": 5,
+        "gencase": 6,
+        "headstart": 7,
+        #"new_app": 8,
+        "outbound_corro": 8,
+        "renewal": 9
     },
     'model':{
         'arch':'bert'

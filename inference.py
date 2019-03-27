@@ -1,6 +1,7 @@
 #encoding:utf-8
 import torch
 import warnings
+
 from torch.utils.data import DataLoader
 from pybert.io.dataset import CreateDataset
 from pybert.io.data_transformer import DataTransformer
@@ -11,6 +12,7 @@ from pybert.model.nn.bert_fine import BertFine
 from pybert.test.predicter import Predicter
 from pybert.preprocessing.preprocessor import EnglishPreProcessor
 from pytorch_pretrained_bert.tokenization import BertTokenizer
+
 warnings.filterwarnings("ignore")
 
 # 主函数
@@ -57,6 +59,7 @@ def main():
                          n_gpu=config['train']['n_gpu'],
                          model_path = config['output']['checkpoint_dir'] / f"best_{config['model']['arch']}_model.pth",
                          )
+    
     # 拟合模型
     result = predicter.predict(data = test_loader)
     print(result)

@@ -1,3 +1,6 @@
+dill
+flask
+flask-cors
 pytorch-pretrained-bert
 scikit-learn
 tensorflow

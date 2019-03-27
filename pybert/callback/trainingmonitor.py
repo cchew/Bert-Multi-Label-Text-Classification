@@ -2,7 +2,12 @@
 import json
 import numpy as np
 from pathlib import Path
+
+# Ching: to fix issue on MacOS
+import matplotlib
+matplotlib.use('PS')
 import matplotlib.pyplot as plt
+
 plt.switch_backend('agg') # 防止ssh上绘图问题
 
 class TrainingMonitor():
