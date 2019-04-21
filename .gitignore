@@ -7,6 +7,7 @@ pybert/output/checkpoints
 
 pybert/dataset/*/kaggle/*
 pybert/dataset/*/testing/*
+data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
