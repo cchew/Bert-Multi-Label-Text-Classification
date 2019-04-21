@@ -1,6 +1,10 @@
 dill
 flask
 flask-cors
+matplotlib
+pandas
+pytorch
 pytorch-pretrained-bert
 scikit-learn
 tensorflow
+torchvision
